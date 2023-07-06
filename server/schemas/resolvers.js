@@ -5,13 +5,13 @@ const resolvers = {
       getOutfit: async (_, { city }) => {
         try {
           const weatherResponse = await axios.get(
-            `https://weather-api-url.com/?city=${city}`
+            `weather api /?city=${city}`
           );
           const temperature = weatherResponse.data.temperature;
           const conditions = weatherResponse.data.conditions;
   
           const clothingResponse = await axios.get(
-            `https://clothing-api-url.com/?temperature=${temperature}&conditions=${conditions}`
+            `clothing api /?temperature=${temperature}&conditions=${conditions}`
           );
   
           const outfit = clothingResponse.data.outfit;
