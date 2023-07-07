@@ -42,6 +42,26 @@ function App() {
         .catch((error) => {
           setError('Error fetching weather data.');
         });
+
+      const geocodeApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=71a9333162ae44fc9515a9d0801ea4e9`; // Replace with your actual API key for geocoding
+
+      fetch(geocodeApiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.results && data.results.length > 0) {
+            const components = data.results[0].components;
+            if (components.postcode) {
+              setZipcode(components.postcode);
+            } else {
+              setError('Postal code not found.');
+            }
+          } else {
+            setError('No results found.');
+          }
+        })
+        .catch((error) => {
+          setError('Error fetching location data.');
+        });
     }
   }, [latitude, longitude]);
 
@@ -53,14 +73,14 @@ function App() {
         <div>
           <button onClick={handleGeolocation}>Allow Geolocation</button>
         </div>
-        {latitude && longitude && <p>Your current coordinates: {latitude}, {longitude}</p>}
+        {!zipcode && <p>Retrieving zip code...</p>}
         {zipcode && <p>Your zipcode: {zipcode}</p>}
         {weather && (
           <div>
             <p>Current weather: {weather.main}</p>
             <p>Temperature: {Math.round(weather.temp - 273.15)}°C</p>
             <img
-              src={`https://openweathermap.org/img/wn/'+${weather.icon}+'@2x.png`} // Replace with the appropriate image URL based on the weather condition
+              src={`https://example.com/images/${weather.icon}.png`} // Replace with the appropriate image URL based on the weather condition
               alt={weather.description}
             />
           </div>
