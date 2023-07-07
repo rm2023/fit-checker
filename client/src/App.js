@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { SignUp } from './SignUp';
 import { Login } from './Login';
+import React, { useState,useEffect } from 'react'
 
 function App() {
   const [latitude, setLatitude] = useState(null);
