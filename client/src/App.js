@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import { SignUp } from './SignUp';
-import { Login } from './Login';
-import React, { useState,useEffect } from 'react'
+import SignUp from './SignUp';
+import Login from './Login';
+import React, { useState, useEffect } from 'react';
 
 function App() {
   const [latitude, setLatitude] = useState(null);
@@ -46,7 +46,7 @@ function App() {
           setError('Error fetching weather data.');
         });
 
-      const geocodeApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=71a9333162ae44fc9515a9d0801ea4e9`; // Replace with your actual API key for geocoding
+      const geocodeApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=71a9333162ae44fc9515a9d0801ea4e9`;
 
       fetch(geocodeApiUrl)
         .then((response) => response.json())
@@ -70,7 +70,7 @@ function App() {
 
   return (
     <div className="App">
-      <login/>
+      <Login />
     </div>
   );
 }
