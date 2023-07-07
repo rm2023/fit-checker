@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { SignUp } from './SignUp';
+import { login } from './Login';
 
 function App() {
   const [latitude, setLatitude] = useState(null);
@@ -68,24 +70,18 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to fit-checker</h1>
-        <p>Can I use your location?</p>
-        <div>
-          <button onClick={handleGeolocation}>Allow Geolocation</button>
-        </div>
-        {!zipcode && <p>Retrieving zip code...</p>}
-        {zipcode && <p>Your zipcode: {zipcode}</p>}
-        {weather && (
-          <div>
-            <p>Current weather: {weather.main}</p>
-            <p>Temperature: {Math.round(weather.temp - 273.15)}°C</p>
-            <img
-              src={`https://example.com/images/${weather.icon}.png`} // Replace with the appropriate image URL based on the weather condition
-              alt={weather.description}
-            />
-          </div>
-        )}
-        {error && <p>Error: {error}</p>}
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
       </header>
     </div>
   );
