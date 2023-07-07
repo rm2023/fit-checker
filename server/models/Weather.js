@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { model } = require('mongoose');
 
 class Weather {
     constructor(temperature, conditions) {

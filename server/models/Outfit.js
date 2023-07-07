@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { model } = require('mongoose');
 
 class Outfit {
     constructor(top, bottom, shoes) {
