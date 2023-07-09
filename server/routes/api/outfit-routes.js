@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { getOutfitRecommendation } = require('../controllers/outfit-controller');
 
+
 router.get('/', async (req, res) => {
     try {
         const { city } = req.query;
