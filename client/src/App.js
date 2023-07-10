@@ -4,21 +4,19 @@ import SignUp from './SignUp';
 import Login from './Login';
 
 function App() {
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [showSignUpOptions, setShowSignUpOptions] = useState(true);
 
   const handleSignUpClick = () => {
-    setShowSignUp(true);
+    setShowSignUpOptions(true);
   };
 
   return (
     <div className="App">
-      {showSignUp ? (
-        <SignUp />
+      <Login />
+      {!showSignUpOptions ? (
+        <button onClick={handleSignUpClick}>Sign Up</button>
       ) : (
-        <>
-          <Login />
-          <button onClick={handleSignUpClick}>Sign Up</button>
-        </>
+        <SignUp />
       )}
     </div>
   );
