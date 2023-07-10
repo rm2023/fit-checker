@@ -42,7 +42,7 @@ const Login = () => {
         </button>
       </div>
       <p className="forgot-password text-right">
-        Forgot <a href="SignUp">password?</a>
+        Forgot <a href="#SignUp">password?</a>
       </p>
     </form>
   );
