@@ -1,25 +1,24 @@
-import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import SignUp from './SignUp';
 import Login from './Login';
+import Home from './Home';
 
 function App() {
-  const [showSignUpOptions, setShowSignUpOptions] = useState(false);
-
-  const handleSignUpClick = () => {
-    setShowSignUpOptions(true);
-  };
-
   return (
-    <div className="App">
-      <Login />
-      {!showSignUpOptions ? (
-        <button onClick={handleSignUpClick}>Sign Up</button>
-      ) : (
-        <SignUp />
-      )}
-    </div>
-  );
+    <>
+    <Router>
+      <Routes>
+        
+          <Route exact path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+        
+        </Routes>
+        </Router>
+    </>
+  )
 }
+
 
 export default App;
