@@ -1,13 +1,37 @@
-const { model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-class Outfit {
-    constructor(top, bottom, shoes) {
-        this.top = top;
-        this.bottom = bottom;
-        this.shoes = shoes;
+const outfitSchema = new Schema(
+    {
+        temperature: {
+            type: String,
+        },
+        conditions: {
+            type: String,
+        },
+        top: {
+            type: String, 
+        },
+        bottom: {
+            type: String,
+        },
+        shoes: {
+            type: String, 
+        },
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: true,
     }
-}
+);
 
-const Outfit = model('Outfit', Outfit);
+outfitSchema 
+  .virtual('outfitCount')
+  .get(function () {
+    return this.meta.outfits;
+});
+
+const Outfit = model('outfit', outfitSchema);
 
 module.exports = Outfit;
