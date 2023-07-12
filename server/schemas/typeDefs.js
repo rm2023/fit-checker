@@ -1,11 +1,6 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type Weather {
-    temperature: Float
-    conditions: String
-  }
-  
   type User {
     _id: ID
     firstName: String!
@@ -18,6 +13,8 @@ const typeDefs = gql`
     top: String
     bottom: String
     shoes: String
+    temperature: Float
+    conditions: String
   }
 
   type Auth {
@@ -46,6 +43,10 @@ const typeDefs = gql`
     ): User
     removeUser(
       userId: ID!
+    ): User
+    login(
+      email: String!
+      password: String!
     ): User
   }
 `;

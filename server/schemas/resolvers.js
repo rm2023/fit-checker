@@ -1,6 +1,6 @@
 const axios = require('axios');
-const { Weather, User, Outfit } = require('..models');
-const { signToken } = require('../utils/auth');
+const { User, Outfit } = require('../models');
+//const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
