@@ -35,7 +35,8 @@ function Home() {
           .then((response) => response.json())
           .then((data) => {
             if (data.weather && data.weather.length > 0) {
-              setWeather(data.weather[0]);
+              setWeather(data);
+              console.log(data)
             } else {
               setError('Weather data not found.');
             }
@@ -44,7 +45,7 @@ function Home() {
             setError('Error fetching weather data.');
           });
   
-        const geocodeApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=71a9333162ae44fc9515a9d0801ea4e9`; // Replace with your actual API key for geocoding
+        const geocodeApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=71a9333162ae44fc9515a9d0801ea4e9`;
   
         fetch(geocodeApiUrl)
           .then((response) => response.json())
@@ -78,10 +79,10 @@ function Home() {
           {zipcode && <p>Your zipcode: {zipcode}</p>}
           {weather && (
             <div>
-              <p>Current weather: {weather.main}</p>
+              <p>Current weather: {weather.weather[0].main}</p>
               <p>Temperature: {Math.round((weather.main.temp - 273.15) * 9/5 + 32)}°F</p>
               <img
-                src={`https://example.com/images/${weather.icon}.png`} // Replace with the appropriate image URL based on the weather condition
+                src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`} // Replace with the appropriate image URL based on the weather condition
                 alt={weather.description}
               />
             </div>
@@ -89,6 +90,7 @@ function Home() {
           {error && <p>Error: {error}</p>}
         </header>
       </div>
+      
     );
   }
   
