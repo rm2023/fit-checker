@@ -8,6 +8,9 @@
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
+  "engines": {
+    "node": "your-node-version"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
