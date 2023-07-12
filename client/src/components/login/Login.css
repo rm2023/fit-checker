@@ -1,0 +1,48 @@
+.Login {
+    background-image: url('../home/background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Home-header {
+    background-color: rgba(243, 243, 243, 0.5);
+    padding: 20px;
+    color: white;
+  }
+  
+  h1 {
+    font-size: 24px;
+    background-color: rgba(243, 243, 243, 0.5);
+    padding: 10px;
+    color: black;
+  
+  }
+  
+  p {
+    font-size: 16px;
+    background-color: rgba(243, 243, 243, 0.5);
+    padding: 5px;
+    color: black;
+  }
+  
+  @media (max-width: 768px) {
+    .App {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 20px;
+    }
+  
+    p {
+      font-size: 14px;
+    }
+  }
