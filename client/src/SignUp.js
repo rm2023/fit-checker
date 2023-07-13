@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Home.css';
 
 
 const SignUp = () => {
@@ -20,6 +21,7 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+  
 
     if (password === confirmPassword) {
       // Perform sign up logic here
@@ -31,6 +33,10 @@ const SignUp = () => {
   };
 
   return (
+    <div className="Login">
+      <header className="Login-header">
+
+
     <form onSubmit={handleSubmit}>
       <h3>Sign Up</h3>
 
@@ -73,6 +79,8 @@ const SignUp = () => {
         </button>
       </div>
     </form>
+    </header>
+    </div>
   );
 };
 

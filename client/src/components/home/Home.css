@@ -20,7 +20,6 @@
   
   h1 {
     font-size: 24px;
-    background-color: rgba(243, 243, 243, 0.5);
     padding: 10px;
     color: black;
   
@@ -28,7 +27,6 @@
   
   p {
     font-size: 16px;
-    background-color: rgba(243, 243, 243, 0.5);
     padding: 5px;
     color: black;
   }
