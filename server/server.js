@@ -89,7 +89,7 @@ app.delete('/find-one-delete/:outfit', async (req, res) => {
 app.post('/find-one-update/:outfit', async (res, req) => {
     try {
         const { outfit } = req.params;
-        const updatedDocument = await Outfits.findOneAndUpdate(
+        const updatedDocument = await Outfit.findOneAndUpdate(
             { name: 'top' },
             { name: outfit },
             { new: true }
@@ -104,7 +104,7 @@ app.post('/find-one-update/:outfit', async (res, req) => {
 app.post('/find-one-update/:outfit', async (res, req) => {
     try {
         const { outfit } = req.params;
-        const updatedDocument = await Outfits.findOneAndUpdate(
+        const updatedDocument = await Outfit.findOneAndUpdate(
             { name: 'bottom' },
             { name: outfit },
             { new: true }
@@ -119,7 +119,7 @@ app.post('/find-one-update/:outfit', async (res, req) => {
 app.post('/find-one-update/:outfit', async (res, req) => {
     try {
         const { outfit } = req.params;
-        const updatedDocument = await Outfits.findOneAndUpdate(
+        const updatedDocument = await Outfit.findOneAndUpdate(
             { name: 'shoes' },
             { name: outfit },
             { new: true }
