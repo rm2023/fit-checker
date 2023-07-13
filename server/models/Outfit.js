@@ -34,4 +34,22 @@ outfitSchema
 
 const Outfit = model('outfit', outfitSchema);
 
+const handleError = (err) => console.error(err);
+
+Outfit.find({})
+  .exec()
+  .then(collection => {
+    if (collection.length === 0) {
+      Outfit
+        .insertMany(
+          [
+            { name: 'top' },
+            { name: 'bottom' },
+            { name: 'shoes' },
+          ]
+        )
+        .catch(err => handleError(err));
+    }
+});
+
 module.exports = Outfit;
