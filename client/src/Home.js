@@ -1,6 +1,9 @@
 import './Home.css';
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import icon1 from "../src/shirt.jpg"
+import icon2 from "../src/short.jpg"
+import icon3 from "../src/shoes.jpg"
 
 function Home() {
     const [latitude, setLatitude] = useState(null);
@@ -8,6 +11,12 @@ function Home() {
     const [zipcode, setZipcode] = useState(null);
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState(null);
+    const [imageClicked, setImageClicked] = useState({
+      icon1: false,
+      second: false,
+      ground: false
+    });
+  
   
     const handleGeolocation = () => {
       if (navigator.geolocation) {
@@ -66,6 +75,14 @@ function Home() {
           });
       }
     }, [latitude, longitude]);
+    
+    //icon generation
+    const handleIconGen = (order) => {
+      setImageClicked((prevState) => ({
+        ...prevState,
+        [order]: !prevState[order]
+      }));
+    };
   
     return (
       <div className="Home">
@@ -76,6 +93,12 @@ function Home() {
             <button onClick={handleGeolocation}>Allow Geolocation</button>
           </div>
           
+          <div className="image">
+        {imageClicked.shirt && <img src={icon1} alt="shirt" />}
+        
+        
+      </div>
+          
           {zipcode && <p>Your zipcode: {zipcode}</p>}
           {weather && (
             <div>
@@ -84,10 +107,28 @@ function Home() {
               <img
                 src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`} // Replace with the appropriate image URL based on the weather condition
                 alt={weather.description}
+                
               />
+              <img
+        src={icon1}
+        alt={"shirt"}
+        />
+        <img
+        src={icon2}
+        alt={"short"}
+        />
+        <img
+        src={icon3}
+        alt={"shoes"}
+        />
             </div>
+            
+            
           )}
           {error && <p>Error: {error}</p>}
+
+          
+
         </header>
       </div>
       
