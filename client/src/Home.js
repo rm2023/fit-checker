@@ -1,6 +1,9 @@
 import './Home.css';
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import icon1 from "../src/shirt.jpg"
+import icon2 from "../src/short.jpg"
+import icon3 from "../src/shoes.jpg"
 
 
 function Home() {
@@ -9,13 +12,13 @@ function Home() {
   const [zipcode, setZipcode] = useState(null);
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
-  const [clothingIcon, setClothingIcon] = useState('');
+    const [imageClicked, setImageClicked] = useState({
+      icon1: false,
+      second: false,
+      ground: false
+    });
+  
 
-  const clothingIconMap = {
-    Clear: 'sunny.png',
-    Clouds: 'cloudy.png',
-    Rain: 'rainy.png',
-  };
 
   const handleGeolocation = () => {
     if (navigator.geolocation) {
@@ -45,12 +48,7 @@ function Home() {
           if (data.weather && data.weather.length > 0) {
             setWeather(data);
             console.log(data)
-            const weatherCondition = data.weather[0].main;
-            if (clothingIconMap[weatherCondition]) {
-              setClothingIcon(clothingIconMap[weatherCondition]);
-            } else {
-              setError('Clothing icon not found.');
-            }
+
           } else {
             setError('Weather data not found.');
           }
@@ -82,6 +80,14 @@ function Home() {
     }
   }, [latitude, longitude]);
 
+      //icon generation
+      const handleIconGen = (order) => {
+        setImageClicked((prevState) => ({
+          ...prevState,
+          [order]: !prevState[order]
+        }));
+      };
+      
   return (
     <div className="Home">
       <header className="Home-header">
@@ -90,7 +96,12 @@ function Home() {
         <div>
           <button onClick={handleGeolocation}>Allow Geolocation</button>
         </div>
-
+   
+        <div className="image">
+        {imageClicked.shirt && <img src={icon1} alt="shirt" />}
+        
+        
+      </div>
         {zipcode && <p>Your zipcode: {zipcode}</p>}
         {weather && (
           <div>
@@ -100,13 +111,21 @@ function Home() {
               src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
               alt={weather.description}
             />
+            <img
+      src={icon1}
+      alt={"shirt"}
+      />
+      <img
+      src={icon2}
+      alt={"short"}
+      />
+      <img
+      src={icon3}
+      alt={"shoes"}
+      />
           </div>
         )}
-        {clothingIcon && (
-          <img
-            src={`./icons/${clothingIcon}`}
-          />
-        )}
+      
         {error && <p>Error: {error}</p>}
       </header>
     </div>
